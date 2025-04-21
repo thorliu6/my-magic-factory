@@ -1,3 +1,4 @@
+
 import json
 
 
@@ -9,4 +10,7 @@ def students_init():
 def marks_record(origin_texts):
     file_name='students_profile.json'
     with open(file_name,'w') as f:
-        json.dump(origin_texts, f)print('来自feature分支的修改')
+        json.dump(origin_texts, f)
+
+print('合并之后的修改:同时包括这两个内容')
+
