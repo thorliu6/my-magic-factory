@@ -34,16 +34,19 @@ def main():
         transformer=DataPreserver()
         secretary.load_data()
     #将数据转换
-        transformer.switch_dict_data(secretary.lot_dicts)
+        students=transformer.switch_dict_data(secretary.lot_dicts)
         if greeter.origin_choice==1:
-            secretary.print_mark(transformer.record_init_data)
+            secretary.print_mark(students)
         elif greeter.origin_choice==2:
             a_new_student=secretary.add_student()
-            print(a_new_student)
-            transformer.record_init_data.append(a_new_student)
-            transformer.switch_data_dict()
-            # print(transformer.record_final_data)
-            secretary.commit_data(transformer.record_final_data)
+            students.append(a_new_student)
+            #print(students)
+            #print(f'this is{transformer.record_init_data},hhhhhh{students}')
+            change_students=transformer.switch_data_dict(students)
+            #print(change_students)
+            secretary.commit_data(change_students)
+            path=secretary.commit_data_csv(change_students)
+            print(path)
         elif greeter.origin_choice==3:
             received_word=input('which subject do you want to search to have a birdview: ')
             secretary.ranking(received_word,transformer.record_init_data)
